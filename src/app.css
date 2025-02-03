@@ -1,3 +1,56 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@layer base {
+	:root {
+		--color-1: #d7c8b1;
+		--color-2: #e8e1d8;
+		--color-3: #fff;
+		--color-4: #ccc;
+		--font-accent: 'DM Sans', serif;
+		--font-body: 'Darker Grotesque', serif;
+		/* From website */
+		--black: black;
+		--white: white;
+		--linen: #e8e1d8;
+		--gainsboro: #e9e7e7;
+		--white-2: #fcfcfc;
+		--white-smoke: #f8f6f6;
+		--black-2: #292927;
+		--black-3: #1d1d1b;
+		--cornflower-blue: #80aff5;
+		--wheat: #d7c8b1;
+	}
+
+	body {
+		@apply bg-black font-primary;
+	}
+
+	.ink-animation::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background-image: url('$lib/assets/images/bg-2.jpg');
+		background-size: cover;
+		background-position: center;
+		z-index: -1;
+
+		mask-image: url('$lib/assets/images/ink_lv2.gif');
+		mask-size: cover;
+		mask-position: center;
+		animation: zoom 150s ease-in-out infinite;
+	}
+
+	@keyframes zoom {
+		0% {
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(1.5);
+		}
+		100% {
+			transform: scale(1);
+		}
+	}
+}
