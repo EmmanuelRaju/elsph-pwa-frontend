@@ -16,7 +16,6 @@
 
 	onMount(async () => {
 		// window.scrollTo(0, 0);
-		document.body.setAttribute('style', 'overflow:hidden;');
 		const pageLoaded = await hidePageLoader();
 		if (pageLoaded.status === 'success') {
 			const tl = gsap.timeline();
@@ -34,10 +33,7 @@
 			)
 				.fromTo('.year-promise', { opacity: 0 }, { opacity: 1, delay: 2, duration: 1 })
 				.to('#foundation-promise', {
-					y: '-25%',
-					onComplete: () => {
-						document.body.setAttribute('style', 'overflow:visible;');
-					}
+					y: '-35%'
 				});
 		}
 
@@ -169,13 +165,9 @@
 </script>
 
 <header class="fixed inset-x-0 flex justify-between p-3">
-	<a
-		href="/"
-		class="size-[60px] content-center rounded-full bg-white p-2 duration-300 hover:invert"
-	>
-		<!-- <img src={logo} alt="logo" class="h-full w-full object-cover" /> -->
-		<p class="text-base font-bold drop-shadow-xl">ELSPH</p>
-	</a>
+	<div class="logo h-10 w-10">
+		<img src={logo} alt="logo" class="h-full w-full object-cover" />
+	</div>
 	<Menu />
 </header>
 
@@ -187,9 +179,9 @@
 	>
 		<div class="year-promise promise-text-shadow text-center text-white">
 			<p class="text-2xl font-medium uppercase tracking-widest">2025 year promise</p>
-			<p class="text-8xl font-medium leading-[5rem]">
-				The Lord will fight for you; you need only to be still <br /><span
-					class="whitespace-nowrap text-3xl font-medium">- Exodus 14:14</span
+			<p class="text-6xl font-medium">
+				The Lord will fight for you; you need only to be still <span
+					class="whitespace-nowrap text-2xl font-medium">- Exodus 14:14</span
 				>
 			</p>
 		</div>
@@ -197,25 +189,23 @@
 
 	<section
 		id="foundation-promise"
-		class="mx-auto max-w-2xl rounded-[40px] bg-black px-3 py-10 text-center text-white"
+		class="mx-auto max-w-lg rounded-[40px] bg-black px-1 pb-10 pt-5 text-center text-white"
 	>
 		<div bind:this={foundationalPromisesRef} class="swiper">
-			<p class="px-2 text-3xl font-medium uppercase tracking-widest">
-				church foundational promises
-			</p>
-			<ul class="swiper-wrapper mt-10 text-7xl">
+			<p class="text-lg font-medium uppercase tracking-widest">church foundational promises</p>
+			<ul class="swiper-wrapper text-4xl">
 				<li class="swiper-slide">
-					Behold I make all things new.<br /><span class="whitespace-nowrap text-3xl font-medium"
+					Behold I make all things new.<br /><span class="whitespace-nowrap text-2xl font-medium"
 						>- Revelation 21:5</span
 					>
 				</li>
 				<li class="swiper-slide">
-					My presence shall go with thee.<br /><span class="whitespace-nowrap text-3xl font-medium"
+					My presence shall go with thee.<br /><span class="whitespace-nowrap text-2xl font-medium"
 						>- Exodus 33:14</span
 					>
 				</li>
 				<li class="swiper-slide">
-					Behold, I will do marvels.<br /><span class="whitespace-nowrap text-3xl font-medium"
+					Behold, I will do marvels.<br /><span class="whitespace-nowrap text-2xl font-medium"
 						>- Exodus 34:10</span
 					>
 				</li>
@@ -223,14 +213,14 @@
 		</div>
 	</section>
 
-	<section id="welcome" class="-mt-5 flex flex-col gap-10 p-10 pt-0">
-		<h2 class="text-center text-6xl font-bold capitalize">welcome</h2>
-		<p class="text-justify text-2xl">
+	<section id="welcome" class="flex flex-col gap-5 p-10 pt-0">
+		<h2 class="text-5xl font-bold capitalize">welcome</h2>
+		<p class="text-xl">
 			Praise The Lord! With changing times, our desire is to utilize the emerging technologies to
 			share the glorious gospel of Lord Jesus Christ, edify the Church of God and prepare Gods
 			people for His coming.
 		</p>
-		<p class="text-justify text-2xl">
+		<p class="text-xl">
 			As we minister, our intent is to effectively meet the spiritual needs of all that who visit
 			our assembly & the site. We hope that you will visit us to understand the purpose of God for
 			our lives, worship Him, fellowship with Gods people, share one another's burden & reach out to
@@ -248,23 +238,23 @@
 		</ul> -->
 	</section>
 
-	<section id="resources" class="flex flex-col gap-10 p-10">
-		<h2 class="text-center text-6xl font-bold capitalize">resources</h2>
-		<p class="text-justify text-2xl">
+	<section id="resources" class="flex flex-col gap-5 p-10">
+		<h2 class="text-5xl font-bold capitalize">resources</h2>
+		<p class=" text-xl">
 			We encourage you to use our library of media resources for your and your church's spiritual
 			enrichment. We keep updating these time to time so keep checking regularly.
 		</p>
 		<div class="">
-			<ul class="mt-5 flex flex-wrap gap-10">
+			<ul class="mt-5 flex flex-wrap gap-5">
 				{#snippet resourceCard(props: { link: string; icon: any; label: string })}
 					<li
-						class="group flex-1 shrink-0 place-content-center rounded-[40px] border bg-white px-5 py-10 shadow-xl duration-200 hover:scale-110 hover:invert"
+						class="group flex-1 shrink-0 place-content-center rounded-[40px] border bg-white p-5 duration-200 hover:scale-110 hover:shadow-xl hover:invert"
 					>
-						<a href={props.link} class="flex flex-col items-center justify-center gap-10">
-							<div class="size-40 duration-1000 group-hover:rotate-[360deg]">
+						<a href={props.link} class="flex flex-col items-center justify-center gap-5">
+							<div class="size-20 duration-1000 group-hover:rotate-[360deg]">
 								<props.icon></props.icon>
 							</div>
-							<p class="text-center text-2xl font-semibold leading-5">{props.label}</p>
+							<p class="text-center text-lg font-medium leading-5">{props.label}</p>
 						</a>
 					</li>
 				{/snippet}
@@ -275,9 +265,9 @@
 		</div>
 	</section>
 
-	<section id="weekly-schedule" class="flex flex-col gap-10 p-10">
-		<h2 class="text-center text-6xl font-bold capitalize">weekly schedule</h2>
-		<p class="text-justify text-2xl">
+	<section id="weekly-schedule" class="flex flex-col gap-5 p-10">
+		<h2 class="text-5xl font-bold capitalize">weekly schedule</h2>
+		<p class="text-xl">
 			There’s so much more to church than Sunday services. Join us in-person or online – on Sundays
 			and during the week.
 		</p>
@@ -292,7 +282,7 @@
 				}[];
 			})}
 				<li
-					class="grid grow grid-cols-12 overflow-clip rounded-[30px] border shadow-lg duration-300 hover:invert"
+					class="mt-5 grid grow grid-cols-12 overflow-clip rounded-[40px] border shadow-lg duration-300 hover:invert"
 				>
 					<div class="col-span-5 bg-black p-5 text-center text-white">
 						<p class="text-4xl font-medium tracking-widest">{params.day}</p>
@@ -304,7 +294,7 @@
 						{#each params.event as event}
 							<div class="flex flex-col justify-center">
 								<p class="text-2xl font-semibold leading-5">{event.title}</p>
-								<p class="text-2xl">
+								<p class="text-xl">
 									{event.time.start}
 									{#if event.time.end}
 										<span> - {event.time.end}</span>
@@ -318,7 +308,7 @@
 					</div>
 				</li>
 			{/snippet}
-			<ul class="flex flex-wrap gap-10">
+			<ul class="flex flex-wrap gap-5">
 				{#each weekSchedule as schedule}
 					{@render weekCard(schedule)}
 				{/each}
@@ -326,9 +316,9 @@
 		</div>
 	</section>
 
-	<section id="prayer-request" hidden>
+	<section id="prayer-request">
 		<h2>prayer request</h2>
-		<p class="text-2xl">
+		<p class="text-xl">
 			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis dignissimos ea explicabo
 			neque reprehenderit iste magnam est tenetur molestias, eum aliquam odit ad, ex asperiores!
 			Illo possimus ex ad doloribus.
@@ -343,8 +333,8 @@
 	</section>
 </main>
 
-<footer class="mt-5 p-10">
-	<p class="text-center text-xl font-medium">&copy; 2025 ELSPH. All rights reserved.</p>
+<footer>
+	<p>2025 Elsph. All rights reserved.</p>
 </footer>
 
 <style lang="postcss">

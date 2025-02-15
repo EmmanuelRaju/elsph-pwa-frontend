@@ -4,8 +4,8 @@
 </script>
 
 {#if $showPageLoader}
-	<div out:fade class="flex h-screen flex-col items-center justify-center p-10">
-		<p class="text-white">Loading...Please wait</p>
+	<div out:fade class="flex h-screen flex-col items-center justify-center gap-2 bg-black p-10">
+		<p class="text-lg font-medium text-white">Loading...Please wait</p>
 		<div class="loader">
 			<div class="loaderBar"></div>
 		</div>
