@@ -1,0 +1,30 @@
+name: Deploy ELSPH PWA App
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Dispatch reason'
+        required: false
+        default: 'NA'
+jobs:
+  deploy:
+    environment: elsph-pwa-frontend
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+      - name: Setup nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.12.0
+      - name: Build
+        run: |
+          npm install
+          CLOUDFLARE_DEPLOY=1 npm run build
+      - name: Publish
+        uses: cloudflare/wrangler-action@3.0.0
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          command: pages deploy .svelte-kit/cloudflare --project-name=elsph-pwa
