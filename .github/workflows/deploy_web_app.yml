@@ -23,7 +23,7 @@ jobs:
           npm install
           CLOUDFLARE_DEPLOY=1 npm run build
       - name: Publish
-        uses: cloudflare/wrangler-action@3.0.0
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
