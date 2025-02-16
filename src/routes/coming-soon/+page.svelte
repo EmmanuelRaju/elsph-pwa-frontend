@@ -8,16 +8,17 @@
 </script>
 
 <div class="grid h-screen place-content-center">
-	<p class="text-5xl font-bold">COMING SOON...</p>
+	<p class="gradient-text text-[15vw] font-bold">COMING SOON</p>
 </div>
 
 <style>
-	p {
-		background: linear-gradient(to right, #7953cd 20%, #00affa 30%, #0190cd 70%, #764ada 80%);
+	.gradient-text {
+		background: linear-gradient(to right, #cfccd4 20%, #7c7e7f 30%, #171718 70%, #eceaef 80%);
+		/* background: linear-gradient(to right, #7953cd 20%, #00affa 30%, #0190cd 70%, #764ada 80%); */
 		-webkit-background-clip: text;
 		background-clip: text;
 		-webkit-text-fill-color: transparent;
-		text-fill-color: transparent;
+		/* text-fill-color: transparent; */
 		background-size: 500% auto;
 		animation: textShine 5s ease-in-out infinite alternate;
 	}

@@ -3,7 +3,17 @@
 	import { ParaglideJS } from '@inlang/paraglide-sveltekit';
 	import '../app.css';
 	import { PageLoader } from '$lib/components/common';
+	import Menu from '$lib/components/common/Menu.svelte';
+	import { browser } from '$app/environment';
+	import Lenis from 'lenis';
+	import 'lenis/dist/lenis.css';
+	import { onMount } from 'svelte';
 	let { children } = $props();
+	onMount(() => {
+		const lenis = new Lenis({
+			autoRaf: true
+		});
+	});
 </script>
 
 <svelte:head>
@@ -15,7 +25,23 @@
 	/>
 </svelte:head>
 
+{#if browser}
+	<header class="fixed inset-x-0 flex justify-between p-3">
+		<a
+			href="/"
+			class="logo relative z-50 size-[60px] content-center rounded-full bg-white p-2 duration-300 hover:invert"
+		>
+			<p class="text-base font-bold drop-shadow-xl">ELSPH</p>
+		</a>
+		<Menu />
+	</header>
+{/if}
+
 <ParaglideJS {i18n}>
 	<PageLoader />
 	{@render children()}
 </ParaglideJS>
+
+<footer class="mt-5 p-10">
+	<p class="text-center text-xl font-medium">&copy; 2025 ELSPH. All rights reserved.</p>
+</footer>

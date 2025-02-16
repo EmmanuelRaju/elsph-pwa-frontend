@@ -2,9 +2,7 @@
 	import { hidePageLoader } from '$lib/utils/common';
 	import { onMount } from 'svelte';
 	import Swiper from 'swiper/bundle';
-	import logo from '$lib/assets/images/logo.png';
 	import 'swiper/css';
-	import Menu from '$lib/components/common/Menu.svelte';
 	import { gsap } from 'gsap';
 	import { TextPlugin } from 'gsap/TextPlugin';
 	import * as ICONS from '$lib/assets/icons';
@@ -15,30 +13,31 @@
 	let showInkAnimation = false;
 
 	onMount(async () => {
-		// window.scrollTo(0, 0);
-		document.body.setAttribute('style', 'overflow:hidden;');
+		// Check if the animation has already played
+		const hasPlayed = sessionStorage.getItem('homeAnimationPlayed');
+
+		// First visit: Run full animation
 		const pageLoaded = await hidePageLoader();
 		if (pageLoaded.status === 'success') {
-			const tl = gsap.timeline();
-			tl.fromTo(
-				'header',
-				{
-					opacity: 0,
-					scale: 0
-				},
-				{
-					opacity: 1,
-					scale: 1,
-					duration: 2
-				}
-			)
-				.fromTo('.year-promise', { opacity: 0 }, { opacity: 1, delay: 2, duration: 1 })
-				.to('#foundation-promise', {
-					y: '-25%',
-					onComplete: () => {
-						document.body.setAttribute('style', 'overflow:visible;');
-					}
-				});
+			if (!hasPlayed) {
+				const tl = gsap.timeline();
+				tl.fromTo('header', { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 2 })
+					.fromTo('.year-promise', { opacity: 0 }, { opacity: 1, delay: 2, duration: 1 })
+					.to('#foundation-promise', {
+						y: '-25%',
+						onComplete: () => {
+							document.body.setAttribute('style', 'overflow:visible;');
+						}
+					});
+				// Mark animation as played
+				sessionStorage.setItem('homeAnimationPlayed', 'true');
+			} else {
+				// Internal navigation: Skip animation and set elements to their final state
+				gsap.set('header', { opacity: 1, scale: 1 });
+				gsap.set('.year-promise', { opacity: 1 });
+				gsap.set('#foundation-promise', { y: '-25%' });
+				document.body.setAttribute('style', 'overflow:visible;');
+			}
 		}
 
 		showInkAnimation = true;
@@ -51,6 +50,37 @@
 		});
 
 		const responsiblitiesTL = gsap.timeline({ repeat: -1, defaults: { duration: 4 } });
+		// responsiblitiesTL
+		// 	.to('#responsibility', {
+		// 		text: 'We are called to<br/>Witness'
+		// 	})
+		// 	.to(
+		// 		'#responsibility-reference',
+		// 		{
+		// 			text: '- Acts 1:8'
+		// 		},
+		// 		'<+0.5'
+		// 	)
+		// 	.to('#responsibility', {
+		// 		text: 'We are called to<br/>Worship'
+		// 	})
+		// 	.to(
+		// 		'#responsibility-reference',
+		// 		{
+		// 			text: '- Psalms 95:6'
+		// 		},
+		// 		'<+0.5'
+		// 	)
+		// 	.to('#responsibility', {
+		// 		text: 'We are called to<br/>Wrestle'
+		// 	})
+		// 	.to(
+		// 		'#responsibility-reference',
+		// 		{
+		// 			text: '- Ephesians 6:12'
+		// 		},
+		// 		'<+0.5'
+		// 	);
 		responsiblitiesTL
 			.to('.christian-responsibilities', {
 				text: 'We are called to<br/>Witness <br>- Acts 1:8'
@@ -59,7 +89,7 @@
 				text: 'We are called to<br/>Worship <br>- Psalms 95:6'
 			})
 			.to('.christian-responsibilities', {
-				text: 'We are called to<br/>Wrestle <br>-Ephesians 6:12'
+				text: 'We are called to<br/>Wrestle <br>- Ephesians 6:12'
 			});
 	});
 
@@ -168,16 +198,15 @@
 	];
 </script>
 
-<header class="fixed inset-x-0 flex justify-between p-3">
+<!-- <header class="fixed inset-x-0 flex justify-between p-3">
 	<a
 		href="/"
 		class="size-[60px] content-center rounded-full bg-white p-2 duration-300 hover:invert"
 	>
-		<!-- <img src={logo} alt="logo" class="h-full w-full object-cover" /> -->
 		<p class="text-base font-bold drop-shadow-xl">ELSPH</p>
 	</a>
 	<Menu />
-</header>
+</header> -->
 
 <main>
 	<section
@@ -197,7 +226,7 @@
 
 	<section
 		id="foundation-promise"
-		class="mx-auto max-w-2xl rounded-[40px] bg-black px-3 py-10 text-center text-white"
+		class="relative -z-[1] mx-auto max-w-2xl rounded-[40px] bg-black px-3 py-10 text-center text-white"
 	>
 		<div bind:this={foundationalPromisesRef} class="swiper">
 			<p class="px-2 text-3xl font-medium uppercase tracking-widest">
@@ -236,10 +265,16 @@
 			our lives, worship Him, fellowship with Gods people, share one another's burden & reach out to
 			the perishing world.
 		</p>
+		<!-- <div
+			class="christian-responsibilities -mx-5 mt-10 text-center text-[15vw] font-medium leading-none"
+		>
+			<p id="responsibility">We are called to<br />Wrestle</p>
+			<p id="responsibility-reference">-Ephesians 6:12</p>
+		</div> -->
 		<p
 			class="christian-responsibilities -mx-5 mt-10 text-center text-[15vw] font-medium leading-none"
 		>
-			We are called to<br />Wrestle <br />-Ephesians 6:12
+			We are called to<br />Wrestle <br />- Ephesians 6:12
 		</p>
 		<!-- <ul class="mt-5 text-center text-2xl font-medium">
 			<li>We are called to Wrestle, Ephesians 6:12.</li>
@@ -248,7 +283,7 @@
 		</ul> -->
 	</section>
 
-	<section id="resources" class="flex flex-col gap-10 p-10">
+	<section id="resources" class="mt-10 flex flex-col gap-10 p-10">
 		<h2 class="text-center text-6xl font-bold capitalize">resources</h2>
 		<p class="text-justify text-2xl">
 			We encourage you to use our library of media resources for your and your church's spiritual
@@ -342,10 +377,6 @@
 		</form>
 	</section>
 </main>
-
-<footer class="mt-5 p-10">
-	<p class="text-center text-xl font-medium">&copy; 2025 ELSPH. All rights reserved.</p>
-</footer>
 
 <style lang="postcss">
 	.promise-text-shadow {
