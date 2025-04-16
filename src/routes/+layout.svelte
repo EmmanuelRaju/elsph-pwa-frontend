@@ -29,7 +29,7 @@
 	<header class="fixed inset-x-0 flex justify-between p-3">
 		<a
 			href="/"
-			class="logo relative z-50 size-[60px] content-center rounded-full bg-white p-2 duration-300 hover:invert"
+			class="logo fixed left-5 z-50 size-[60px] content-center rounded-full bg-white p-2 duration-300 hover:invert"
 		>
 			<p class="text-base font-bold drop-shadow-xl">ELSPH</p>
 		</a>
