@@ -10,8 +10,8 @@
 		const { data, error } = await supabase.storage
 			.from(PUBLIC_SUPABASE_STORAGE_BUCKET)
 			.list('music', {
-				limit: 10,
-				offset: 0,
+				limit: 100,
+				offset: 100,
 				sortBy: { column: 'name', order: 'asc' }
 			});
 
@@ -40,11 +40,11 @@
 
 {#if musicFiles.length > 0}
 	<ul class="space-y-4">
-		{#each musicFiles as url}
+		<!-- {#each musicFiles as url}
 			<li class="rounded-lg border p-4 shadow">
 				<audio controls src={url} class="w-full"></audio>
 			</li>
-		{/each}
+		{/each} -->
 	</ul>
 {:else}
 	<p>No music files found.</p>

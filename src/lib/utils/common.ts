@@ -4,13 +4,13 @@ export const hidePageLoader: () => Promise<{ status: 'success' | 'failure' }> = 
 	return new Promise((resolve, reject) => {
 		try {
 			if (document.readyState === 'complete') {
-				console.log('Document ready state complete in IF block');
+				// console.log('Document ready state complete in IF block');
 				showPageLoader.set(false);
 				resolve({ status: 'success' });
 			} else {
 				document.addEventListener('readystatechange', () => {
 					if (document.readyState === 'complete') {
-						console.log('Document ready state complete in ELSE block');
+						// console.log('Document ready state complete in ELSE block');
 						showPageLoader.set(false);
 						resolve({ status: 'success' });
 					}
@@ -34,4 +34,17 @@ export const bodyScrollHandler = (allowScroll: boolean) => {
 		document.body.classList.remove('!overflow-hidden');
 		document.body.classList.remove('h-screen');
 	}
+};
+
+/**
+ * Cleans the file name by removing the prefix and replacing dashes and underscores with spaces
+ * @param name The file name to clean
+ * @returns The cleaned file name
+ */
+export const cleanFileName = (name: string) => {
+	return name
+		.replace(/^\d+-/, '')
+		.replace(/\.mp3$/i, '')
+		.replace(/-/g, ' ')
+		.replace(/_/g, ' ');
 };

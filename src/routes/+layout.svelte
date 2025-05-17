@@ -8,6 +8,8 @@
 	import Lenis from 'lenis';
 	import 'lenis/dist/lenis.css';
 	import { onMount } from 'svelte';
+	import MusicPlayer from '$lib/components/common/MusicPlayer.svelte';
+
 	let { children } = $props();
 	onMount(() => {
 		const lenis = new Lenis({
@@ -42,6 +44,7 @@
 	{@render children()}
 </ParaglideJS>
 
-<footer class="mt-5 p-10">
+<footer class="mt-5 p-10 pb-20">
 	<p class="text-center text-xl font-medium">&copy; 2025 ELSPH. All rights reserved.</p>
 </footer>
+<MusicPlayer />

@@ -25,8 +25,8 @@
 	});
 </script>
 
-<main>
+<main class="content-bg">
 	<Hero title="Emmanuel"></Hero>
-	<!-- <StackedCards></StackedCards> -->
-	<audio controls src={audioUrl}></audio>
+	<StackedCards></StackedCards>
+	<!-- <audio controls src={audioUrl}></audio> -->
 </main>

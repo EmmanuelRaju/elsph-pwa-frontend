@@ -95,25 +95,25 @@
 
 	const resources = [
 		{
-			label: 'Video messages',
+			label: 'Videos',
 			icon: ICONS.play,
 			link: '/coming-soon'
 		},
 		{
 			label: 'Music',
 			icon: ICONS.music,
-			link: '/coming-soon'
-		},
-		{
-			label: 'Audio messages',
-			icon: ICONS.microphone,
-			link: '/coming-soon'
-		},
-		{
-			label: 'Articles',
-			icon: ICONS.file,
-			link: '/coming-soon'
+			link: '/music'
 		}
+		// {
+		// 	label: 'Audio',
+		// 	icon: ICONS.microphone,
+		// 	link: '/coming-soon'
+		// },
+		// {
+		// 	label: 'Articles',
+		// 	icon: ICONS.file,
+		// 	link: '/coming-soon'
+		// }
 	];
 
 	const weekSchedule: {
@@ -252,130 +252,132 @@
 		</div>
 	</section>
 
-	<section id="welcome" class="-mt-5 flex flex-col gap-10 p-10 pt-0">
-		<h2 class="text-center text-6xl font-bold capitalize">welcome</h2>
-		<p class="text-justify text-2xl">
-			Praise The Lord! With changing times, our desire is to utilize the emerging technologies to
-			share the glorious gospel of Lord Jesus Christ, edify the Church of God and prepare Gods
-			people for His coming.
-		</p>
-		<p class="text-justify text-2xl">
-			As we minister, our intent is to effectively meet the spiritual needs of all that who visit
-			our assembly & the site. We hope that you will visit us to understand the purpose of God for
-			our lives, worship Him, fellowship with Gods people, share one another's burden & reach out to
-			the perishing world.
-		</p>
-		<!-- <div
-			class="christian-responsibilities -mx-5 mt-10 text-center text-[15vw] font-medium leading-none"
-		>
-			<p id="responsibility">We are called to<br />Wrestle</p>
-			<p id="responsibility-reference">-Ephesians 6:12</p>
-		</div> -->
-		<p
-			class="christian-responsibilities -mx-5 mt-10 text-center text-[15vw] font-medium leading-none"
-		>
-			We are called to<br />Wrestle <br />- Ephesians 6:12
-		</p>
-		<!-- <ul class="mt-5 text-center text-2xl font-medium">
-			<li>We are called to Wrestle, Ephesians 6:12.</li>
-			<li>We are called to Witness, Acts 1:8 .</li>
-			<li>We are called to Worship, Psalms 95.6.</li>
-		</ul> -->
-	</section>
+	<div class="content-bg">
+		<section id="welcome" class="-mt-5 flex flex-col gap-10 p-10 pt-0">
+			<h2 class="text-center text-6xl font-bold capitalize">welcome</h2>
+			<p class="text-center text-2xl">
+				Praise The Lord! With changing times, our desire is to utilize the emerging technologies to
+				share the glorious gospel of Lord Jesus Christ, edify the Church of God and prepare Gods
+				people for His coming.
+			</p>
+			<p class="text-center text-2xl">
+				As we minister, our intent is to effectively meet the spiritual needs of all that who visit
+				our assembly & the site. We hope that you will visit us to understand the purpose of God for
+				our lives, worship Him, fellowship with Gods people, share one another's burden & reach out
+				to the perishing world.
+			</p>
+			<!-- <div
+				class="christian-responsibilities -mx-5 mt-10 text-center text-[15vw] font-medium leading-none"
+			>
+				<p id="responsibility">We are called to<br />Wrestle</p>
+				<p id="responsibility-reference">-Ephesians 6:12</p>
+			</div> -->
+			<p
+				class="christian-responsibilities -mx-5 mt-10 text-center text-[15vw] font-medium leading-none"
+			>
+				We are called to<br />Wrestle <br />- Ephesians 6:12
+			</p>
+			<!-- <ul class="mt-5 text-center text-2xl font-medium">
+				<li>We are called to Wrestle, Ephesians 6:12.</li>
+				<li>We are called to Witness, Acts 1:8 .</li>
+				<li>We are called to Worship, Psalms 95.6.</li>
+			</ul> -->
+		</section>
 
-	<section id="resources" class="mt-10 flex flex-col gap-10 p-10">
-		<h2 class="text-center text-6xl font-bold capitalize">resources</h2>
-		<p class="text-justify text-2xl">
-			We encourage you to use our library of media resources for your and your church's spiritual
-			enrichment. We keep updating these time to time so keep checking regularly.
-		</p>
-		<div class="">
-			<ul class="mt-5 flex flex-wrap gap-10">
-				{#snippet resourceCard(props: { link: string; icon: any; label: string })}
+		<section id="resources" class="mt-10 flex flex-col gap-10 p-10">
+			<h2 class="text-center text-6xl font-bold capitalize">resources</h2>
+			<p class="text-center text-2xl">
+				We encourage you to use our library of media resources for your and your church's spiritual
+				enrichment. We keep updating these time to time so keep checking regularly.
+			</p>
+			<div class="">
+				<ul class="mt-5 flex flex-wrap gap-10">
+					{#snippet resourceCard(props: { link: string; icon: any; label: string })}
+						<li
+							class="group flex-1 shrink-0 place-content-center rounded-[40px] border bg-white px-5 py-10 shadow-xl duration-200 hover:scale-110 hover:invert"
+						>
+							<a href={props.link} class="flex flex-col items-center justify-center gap-10">
+								<div class="size-40 duration-1000">
+									<props.icon></props.icon>
+								</div>
+								<p class="text-center text-2xl font-semibold leading-5">{props.label}</p>
+							</a>
+						</li>
+					{/snippet}
+					{#each resources as card}
+						{@render resourceCard(card)}
+					{/each}
+				</ul>
+			</div>
+		</section>
+
+		<section id="weekly-schedule" class="flex flex-col gap-10 p-10">
+			<h2 class="text-center text-6xl font-bold capitalize">weekly schedule</h2>
+			<p class="text-center text-2xl">
+				There’s so much more to church than Sunday services. Join us in-person or online – on
+				Sundays and during the week.
+			</p>
+			<div class="">
+				{#snippet weekCard(params: {
+					day: string;
+					date: string;
+					event: {
+						title: string;
+						time: { start: string; end?: string };
+						description?: string;
+					}[];
+				})}
 					<li
-						class="group flex-1 shrink-0 place-content-center rounded-[40px] border bg-white px-5 py-10 shadow-xl duration-200 hover:scale-110 hover:invert"
+						class="grid grow grid-cols-12 overflow-clip rounded-[30px] border shadow-lg duration-300 hover:invert"
 					>
-						<a href={props.link} class="flex flex-col items-center justify-center gap-10">
-							<div class="size-40 duration-1000 group-hover:rotate-[360deg]">
-								<props.icon></props.icon>
-							</div>
-							<p class="text-center text-2xl font-semibold leading-5">{props.label}</p>
-						</a>
+						<div class="col-span-5 bg-black p-5 text-center text-white">
+							<p class="text-4xl font-medium tracking-widest">{params.day}</p>
+							<p class="whitespace-nowrap text-lg font-medium uppercase">
+								{params.date}
+							</p>
+						</div>
+						<div class="col-span-7 bg-white p-5">
+							{#each params.event as event}
+								<div class="flex flex-col justify-center">
+									<p class="text-2xl font-semibold leading-5">{event.title}</p>
+									<p class="text-2xl">
+										{event.time.start}
+										{#if event.time.end}
+											<span> - {event.time.end}</span>
+										{/if}
+									</p>
+									{#if event.description}
+										<p>{event.description}</p>
+									{/if}
+								</div>
+							{/each}
+						</div>
 					</li>
 				{/snippet}
-				{#each resources as card}
-					{@render resourceCard(card)}
-				{/each}
-			</ul>
-		</div>
-	</section>
+				<ul class="flex flex-wrap gap-10">
+					{#each weekSchedule as schedule}
+						{@render weekCard(schedule)}
+					{/each}
+				</ul>
+			</div>
+		</section>
 
-	<section id="weekly-schedule" class="flex flex-col gap-10 p-10">
-		<h2 class="text-center text-6xl font-bold capitalize">weekly schedule</h2>
-		<p class="text-justify text-2xl">
-			There’s so much more to church than Sunday services. Join us in-person or online – on Sundays
-			and during the week.
-		</p>
-		<div class="">
-			{#snippet weekCard(params: {
-				day: string;
-				date: string;
-				event: {
-					title: string;
-					time: { start: string; end?: string };
-					description?: string;
-				}[];
-			})}
-				<li
-					class="grid grow grid-cols-12 overflow-clip rounded-[30px] border shadow-lg duration-300 hover:invert"
-				>
-					<div class="col-span-5 bg-black p-5 text-center text-white">
-						<p class="text-4xl font-medium tracking-widest">{params.day}</p>
-						<p class="whitespace-nowrap text-lg font-medium uppercase">
-							{params.date}
-						</p>
-					</div>
-					<div class="col-span-7 bg-white p-5">
-						{#each params.event as event}
-							<div class="flex flex-col justify-center">
-								<p class="text-2xl font-semibold leading-5">{event.title}</p>
-								<p class="text-2xl">
-									{event.time.start}
-									{#if event.time.end}
-										<span> - {event.time.end}</span>
-									{/if}
-								</p>
-								{#if event.description}
-									<p>{event.description}</p>
-								{/if}
-							</div>
-						{/each}
-					</div>
-				</li>
-			{/snippet}
-			<ul class="flex flex-wrap gap-10">
-				{#each weekSchedule as schedule}
-					{@render weekCard(schedule)}
-				{/each}
-			</ul>
-		</div>
-	</section>
-
-	<section id="prayer-request" hidden>
-		<h2>prayer request</h2>
-		<p class="text-2xl">
-			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis dignissimos ea explicabo
-			neque reprehenderit iste magnam est tenetur molestias, eum aliquam odit ad, ex asperiores!
-			Illo possimus ex ad doloribus.
-		</p>
-		<form>
-			<input type="text" placeholder="Your Name" />
-			<input type="email" placeholder="Your Email" />
-			<input type="text" placeholder="Your Phone" />
-			<textarea placeholder="Your Prayer Request"></textarea>
-			<button type="submit">Submit</button>
-		</form>
-	</section>
+		<section id="prayer-request" hidden>
+			<h2>prayer request</h2>
+			<p class="text-2xl">
+				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis dignissimos ea explicabo
+				neque reprehenderit iste magnam est tenetur molestias, eum aliquam odit ad, ex asperiores!
+				Illo possimus ex ad doloribus.
+			</p>
+			<form>
+				<input type="text" placeholder="Your Name" />
+				<input type="email" placeholder="Your Email" />
+				<input type="text" placeholder="Your Phone" />
+				<textarea placeholder="Your Prayer Request"></textarea>
+				<button type="submit">Submit</button>
+			</form>
+		</section>
+	</div>
 </main>
 
 <style lang="postcss">
