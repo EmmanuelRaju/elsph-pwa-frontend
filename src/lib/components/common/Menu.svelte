@@ -98,13 +98,10 @@
 
 	const navItems = [
 		{ label: 'Home', link: '/' },
-		{ label: 'About Us', link: '/coming-soon' },
-		{ label: 'Good News', link: '/coming-soon' },
+		{ label: 'About Us', link: '/about-us' },
+		{ label: 'Good News', link: '/good-news' },
 		{ label: 'Prayer Requests', link: '/coming-soon' },
 		{ label: 'Contact Us', link: '/coming-soon' }
-		// { label: 'Home', link: '/' },
-		// { label: 'About Us', link: '/about-us' },
-		// { label: 'Good News', link: '/good-news' },
 		// { label: 'Prayer Requests', link: '/prayer-requests' },
 		// { label: 'Contact Us', link: '/contact-us' }
 	];
