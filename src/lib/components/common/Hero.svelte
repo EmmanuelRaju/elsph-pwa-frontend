@@ -2,7 +2,11 @@
 	import { onMount, onDestroy } from 'svelte';
 	import gsap from 'gsap';
 
-	export let title: string;
+	export let title: string,
+		classes: {
+			container?: string;
+			title?: string;
+		} = { container: '', title: '' };
 
 	let heroRef: HTMLElement;
 	let textRef: HTMLElement;
@@ -50,11 +54,11 @@
 
 <section
 	bind:this={heroRef}
-	class="hero flex h-[60vh] w-full items-center justify-center overflow-hidden"
+	class="hero flex h-[60vh] w-full items-center justify-center overflow-hidden {classes.container}"
 >
 	<h1
 		bind:this={textRef}
-		class="hero-text text-[18vw] font-black uppercase leading-none text-black"
+		class="hero-text text-[18vw] font-black uppercase leading-none text-black {classes.title}"
 	>
 		{title}
 	</h1>

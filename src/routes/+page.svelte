@@ -95,14 +95,19 @@
 
 	const resources = [
 		{
-			label: 'Videos',
+			label: 'YouTube Videos',
 			icon: ICONS.play,
-			link: '/coming-soon'
+			link: 'https://www.youtube.com/@ElShaddaiPrayerHouse'
 		},
 		{
 			label: 'Music',
 			icon: ICONS.music,
 			link: '/music'
+		},
+		{
+			label: 'Lyrics',
+			icon: ICONS.lyric,
+			link: '/lyrics'
 		}
 		// {
 		// 	label: 'Audio',
