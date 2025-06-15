@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ChevronDown } from '$lib/assets/icons';
+	// import { ChevronDown } from '$lib/assets/icons';
 
 	export let id: string,
 		name: string,
@@ -21,7 +21,7 @@
 			{/if}
 		</div>
 	{/if}
-	<div class="relative z-0 flex items-center">
+	<div class=" flex items-center">
 		<select
 			{id}
 			bind:value
@@ -37,15 +37,15 @@
 				<option value={option.value}>{option.label}</option>
 			{/each}
 		</select>
-		<div class="absolute right-3">
+		<!-- <div class="absolute right-3">
 			<ChevronDown></ChevronDown>
-		</div>
+		</div> -->
 	</div>
 </div>
 
-<style>
+<!-- <style>
 	select {
 		-webkit-appearance: none;
 		appearance: none;
 	}
-</style>
+</style> -->

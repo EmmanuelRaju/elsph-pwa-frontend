@@ -11,6 +11,7 @@
 	import MusicPlayer from '$lib/components/common/MusicPlayer.svelte';
 	import ScrollToTop from '$lib/components/common/ScrollToTop.svelte';
 	import NewMenu from '$lib/components/common/NewMenu.svelte';
+	import InstallPrompt from '$lib/components/common/InstallPrompt.svelte';
 
 	let { children } = $props();
 	// onMount(() => {
@@ -51,3 +52,4 @@
 </footer>
 <MusicPlayer />
 <ScrollToTop></ScrollToTop>
+<InstallPrompt></InstallPrompt>

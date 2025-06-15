@@ -82,7 +82,7 @@
 	<Hero title="Lyrics"></Hero>
 
 	<FiltersContainer>
-		<div class="mx-auto flex max-w-4xl gap-5">
+		<div class="mx-auto flex max-w-4xl flex-wrap gap-5">
 			<Select
 				options={bookOptions}
 				id="book"
@@ -95,9 +95,9 @@
 				id="search-song"
 				name="search"
 				bind:value={searchQuery}
-				label="Search"
+				label="Song number or title"
 				on:input={searchSongs}
-				placeholder="Search by song number or title"
+				placeholder="Search"
 			></Search>
 		</div>
 	</FiltersContainer>

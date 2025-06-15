@@ -42,7 +42,7 @@
 	}
 
 	body {
-		@apply font-primary;
+		@apply font-primary font-medium;
 	}
 
 	/* .ink-animation::before {
@@ -61,7 +61,7 @@
 	} */
 
 	.bg-squares {
-		background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
+		background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)),
 			url('/src/lib/assets/images/bg-squares.png');
 	}
 

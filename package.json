@@ -43,6 +43,7 @@
 	"dependencies": {
 		"@inlang/paraglide-sveltekit": "^0.15.5",
 		"@supabase/supabase-js": "^2.49.4",
+		"@vite-pwa/sveltekit": "^1.0.0",
 		"gsap": "^3.12.7",
 		"suncalc": "^1.9.0",
 		"swiper": "^11.2.2"

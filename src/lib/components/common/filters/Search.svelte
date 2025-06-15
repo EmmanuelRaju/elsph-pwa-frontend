@@ -7,7 +7,10 @@
 		disabled: boolean = false,
 		placeholder: string = '',
 		value: string,
-		classes = { container: '', inputContainer: '' };
+		classes: {
+			container?: string;
+			inputContainer?: string;
+		} = { container: '', inputContainer: '' };
 </script>
 
 <div class="flex flex-1 flex-col gap-2 {classes.container}">
