@@ -9,13 +9,14 @@
 	import 'lenis/dist/lenis.css';
 	import { onMount } from 'svelte';
 	import MusicPlayer from '$lib/components/common/MusicPlayer.svelte';
+	import ScrollToTop from '$lib/components/common/ScrollToTop.svelte';
 
 	let { children } = $props();
-	onMount(() => {
-		const lenis = new Lenis({
-			autoRaf: true
-		});
-	});
+	// onMount(() => {
+	// 	const lenis = new Lenis({
+	// 		autoRaf: true
+	// 	});
+	// });
 </script>
 
 <svelte:head>
@@ -48,3 +49,4 @@
 	<p class="text-center text-xl font-medium">&copy; 2025 ELSPH. All rights reserved.</p>
 </footer>
 <MusicPlayer />
+<ScrollToTop></ScrollToTop>

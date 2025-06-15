@@ -9,3 +9,4 @@ export { default as music } from './music.svelte';
 export { default as pause } from './pause.svelte';
 export { default as play } from './play.svelte';
 export { default as SearchIcon } from './search.svelte';
+export { default as UpArrow } from './up-arrow.svelte';
