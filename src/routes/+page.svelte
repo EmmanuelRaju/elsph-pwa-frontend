@@ -6,6 +6,7 @@
 	import { gsap } from 'gsap';
 	import { TextPlugin } from 'gsap/TextPlugin';
 	import * as ICONS from '$lib/assets/icons';
+	import InfiniteMovingCards from '$lib/components/common/InfiniteMovingCards.svelte';
 
 	gsap.registerPlugin(TextPlugin);
 
@@ -109,16 +110,6 @@
 			icon: ICONS.lyric,
 			link: '/lyrics'
 		}
-		// {
-		// 	label: 'Audio',
-		// 	icon: ICONS.microphone,
-		// 	link: '/coming-soon'
-		// },
-		// {
-		// 	label: 'Articles',
-		// 	icon: ICONS.file,
-		// 	link: '/coming-soon'
-		// }
 	];
 
 	const weekSchedule: {
@@ -132,7 +123,7 @@
 	}[] = [
 		{
 			day: 'Mon',
-			date: '17 Feb 2025',
+			date: '16 Jun 2025',
 			event: [
 				{
 					title: `Sunday school teacher's zoom meeting`,
@@ -142,7 +133,7 @@
 		},
 		{
 			day: 'Tue',
-			date: '18 Feb 2025',
+			date: '17 Jun 2025',
 			event: [
 				{
 					title: `Bible study`,
@@ -152,7 +143,7 @@
 		},
 		{
 			day: 'Wed',
-			date: '19 Feb 2025',
+			date: '18 Jun 2025',
 			event: [
 				{
 					title: `Sister's meeting`,
@@ -162,7 +153,7 @@
 		},
 		{
 			day: 'Thu',
-			date: '20 Feb 2025',
+			date: '19 Jun 2025',
 			event: [
 				{
 					title: `Church prayer`,
@@ -172,7 +163,7 @@
 		},
 		{
 			day: 'Fri',
-			date: '21 Feb 2025',
+			date: '20 Jun 2025',
 			event: [
 				{
 					title: `All night prayer`,
@@ -182,7 +173,7 @@
 		},
 		{
 			day: 'Sat',
-			date: '22 Feb 2025',
+			date: '21 Jun 2025',
 			event: [
 				{
 					title: `Fasting prayer`,
@@ -192,7 +183,7 @@
 		},
 		{
 			day: 'Sun',
-			date: '23 Feb 2025',
+			date: '22 Jun 2025',
 			event: [
 				{
 					title: `Sunday service`,
@@ -202,16 +193,6 @@
 		}
 	];
 </script>
-
-<!-- <header class="fixed inset-x-0 flex justify-between p-3">
-	<a
-		href="/"
-		class="size-[60px] content-center rounded-full bg-white p-2 duration-300 hover:invert"
-	>
-		<p class="text-base font-bold drop-shadow-xl">ELSPH</p>
-	</a>
-	<Menu />
-</header> -->
 
 <svelte:head>
 	<title>ELSPH | Home</title>
@@ -336,65 +317,11 @@
 				There’s so much more to church than Sunday services. Join us in-person or online – on
 				Sundays and during the week.
 			</p>
-			<div class="">
-				{#snippet weekCard(params: {
-					day: string;
-					date: string;
-					event: {
-						title: string;
-						time: { start: string; end?: string };
-						description?: string;
-					}[];
-				})}
-					<li
-						class="grid grow grid-cols-12 overflow-clip rounded-[30px] border shadow-lg duration-300 hover:invert"
-					>
-						<div class="col-span-5 bg-black p-5 text-center text-white">
-							<p class="text-4xl font-medium tracking-widest">{params.day}</p>
-							<p class="whitespace-nowrap text-lg font-medium uppercase">
-								{params.date}
-							</p>
-						</div>
-						<div class="col-span-7 bg-white p-5">
-							{#each params.event as event}
-								<div class="flex flex-col justify-center">
-									<p class="text-2xl font-semibold leading-5">{event.title}</p>
-									<p class="text-2xl">
-										{event.time.start}
-										{#if event.time.end}
-											<span> - {event.time.end}</span>
-										{/if}
-									</p>
-									{#if event.description}
-										<p>{event.description}</p>
-									{/if}
-								</div>
-							{/each}
-						</div>
-					</li>
-				{/snippet}
-				<ul class="flex flex-wrap gap-10">
-					{#each weekSchedule as schedule}
-						{@render weekCard(schedule)}
-					{/each}
-				</ul>
+			<div
+				class="relative flex flex-col items-center justify-center overflow-hidden rounded-md antialiased"
+			>
+				<InfiniteMovingCards items={weekSchedule} direction="left" speed="fast" />
 			</div>
-		</section>
-
-		<section id="prayer-request" hidden>
-			<h2>prayer request</h2>
-			<p class="text-2xl">
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis dignissimos ea explicabo
-				neque reprehenderit iste magnam est tenetur molestias, eum aliquam odit ad, ex asperiores!
-				Illo possimus ex ad doloribus.
-			</p>
-			<form>
-				<input type="text" placeholder="Your Name" />
-				<input type="email" placeholder="Your Email" />
-				<input type="text" placeholder="Your Phone" />
-				<textarea placeholder="Your Prayer Request"></textarea>
-				<button type="submit">Submit</button>
-			</form>
 		</section>
 	</div>
 </main>
