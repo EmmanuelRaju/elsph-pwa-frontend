@@ -21,7 +21,7 @@
 			{/if}
 		</div>
 	{/if}
-	<div class="relative flex items-center">
+	<div class="relative z-0 flex items-center">
 		<select
 			{id}
 			bind:value

@@ -69,6 +69,15 @@
 	};
 </script>
 
+<svelte:head>
+	<title>ELSPH | Lyrics</title>
+	<meta name="description" content="Song lyrics" />
+	<meta property="og:title" content="ELSPH | Lyrics" />
+	<meta property="og:description" content="Song lyrics" />
+	<meta property="og:image" content="/favicon.png" />
+	<meta property="og:url" content="https://elshaddaiprayerhouse.in/lyrics" />
+</svelte:head>
+
 <main class="">
 	<Hero title="Lyrics"></Hero>
 
@@ -98,7 +107,9 @@
 		{/if}
 		<ul class="mx-auto grid max-w-max grid-cols-12 gap-x-6 gap-y-2">
 			{#each songs as song, i (song.intSongNumber + i)}
-				<li class="col-span-full text-2xl duration-200 hover:scale-110 hover:underline">
+				<li
+					class="col-span-full origin-left transform text-2xl duration-200 hover:scale-110 hover:underline"
+				>
 					<a href="/lyrics/{selectedBook!.slug}/{song.intSongNumber}" class="flex gap-2">
 						<span class="text-right">{song.intSongNumber}.</span> <span>{song.title}</span>
 					</a>

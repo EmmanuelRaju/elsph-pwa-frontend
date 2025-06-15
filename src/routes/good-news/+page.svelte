@@ -8,11 +8,20 @@
 	});
 </script>
 
+<svelte:head>
+	<title>ELSPH | Good News</title>
+	<meta name="description" content="Gospel" />
+	<meta property="og:title" content="ELSPH | Good News" />
+	<meta property="og:description" content="Gospel" />
+	<meta property="og:image" content="/favicon.png" />
+	<meta property="og:url" content="https://elshaddaiprayerhouse.in/good-news" />
+</svelte:head>
+
 <main class="">
 	<Hero title="Good News"></Hero>
 
-	<section class="content-bg p-10">
-		<div class="mx-auto max-w-4xl">
+	<section class="content-bg p-10 pt-0">
+		<div class="mx-auto max-w-7xl">
 			<p>
 				Psychologists have long known that every person has two great longings and inward needs. The
 				first is to be loved, and the second is to love. But when pressures and heartaches come into
@@ -79,13 +88,17 @@
 				Friend, if you have not yet made a decision for Christ, I urge you to receive Him today.
 			</p>
 
-			<p><strong>Contact Email ID: pgdevadass@gmail.com or enoch.ephraim@gmail.com</strong></p>
+			<p class="underline">
+				<a href="mailto:elshaddai.ph@gmail.com"
+					><strong>Contact Email ID: elshaddai.ph@gmail.com</strong></a
+				>
+			</p>
 		</div>
 	</section>
 </main>
 
 <style lang="postcss">
 	p {
-		@apply my-5 text-justify text-2xl;
+		@apply my-5 text-2xl md:text-justify;
 	}
 </style>

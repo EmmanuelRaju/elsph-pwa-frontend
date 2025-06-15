@@ -10,6 +10,7 @@
 	import { onMount } from 'svelte';
 	import MusicPlayer from '$lib/components/common/MusicPlayer.svelte';
 	import ScrollToTop from '$lib/components/common/ScrollToTop.svelte';
+	import NewMenu from '$lib/components/common/NewMenu.svelte';
 
 	let { children } = $props();
 	// onMount(() => {
@@ -36,7 +37,7 @@
 		>
 			<p class="text-base font-bold drop-shadow-xl">ELSPH</p>
 		</a>
-		<Menu />
+		<NewMenu />
 	</header>
 {/if}
 

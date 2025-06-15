@@ -213,17 +213,31 @@
 	<Menu />
 </header> -->
 
+<svelte:head>
+	<title>ELSPH | Home</title>
+	<meta
+		name="description"
+		content="El Shaddai Prayer House - A place of worship and spiritual growth."
+	/>
+	<meta property="og:title" content="ELSPH | Home" />
+	<meta property="og:description" content="A place of worship and spiritual growth." />
+	<meta property="og:image" content="/favicon.png" />
+	<meta property="og:url" content="https://elshaddaiprayerhouse.in" />
+</svelte:head>
+
 <main>
 	<section
 		id="hero"
 		class="flex h-screen items-center justify-center overflow-clip"
 		class:ink-animation={showInkAnimation}
 	>
-		<div class="year-promise promise-text-shadow text-center text-white">
-			<p class="text-2xl font-medium uppercase tracking-widest">2025 year promise</p>
-			<p class="text-8xl font-medium leading-[5rem]">
+		<div class="year-promise promise-text-shadow max-w-4xl text-center text-white">
+			<p class="lg:4xl text-2xl font-medium uppercase tracking-widest underline md:text-3xl">
+				2025 year promise
+			</p>
+			<p class="lg:9xl text-6xl font-medium md:text-7xl">
 				The Lord will fight for you; you need only to be still <br /><span
-					class="whitespace-nowrap text-3xl font-medium">- Exodus 14:14</span
+					class="lg:4xl whitespace-nowrap text-2xl font-medium md:text-3xl">- Exodus 14:14</span
 				>
 			</p>
 		</div>

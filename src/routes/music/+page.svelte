@@ -28,6 +28,15 @@
 	});
 </script>
 
+<svelte:head>
+	<title>ELSPH | Music</title>
+	<meta name="description" content="Audio songs and messages" />
+	<meta property="og:title" content="ELSPH | Music" />
+	<meta property="og:description" content="Audio songs and messages" />
+	<meta property="og:image" content="/favicon.png" />
+	<meta property="og:url" content="https://elshaddaiprayerhouse.in/music" />
+</svelte:head>
+
 <main class="">
 	<Hero title="Music"></Hero>
 

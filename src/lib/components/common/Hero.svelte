@@ -54,11 +54,11 @@
 
 <section
 	bind:this={heroRef}
-	class="hero flex h-[60vh] w-full items-center justify-center overflow-hidden {classes.container}"
+	class="hero flex min-h-[30vh] w-full items-center justify-center overflow-hidden {classes.container}"
 >
 	<h1
 		bind:this={textRef}
-		class="hero-text text-[18vw] font-black uppercase leading-none text-black {classes.title}"
+		class="hero-text text-7xl font-black uppercase leading-none text-black md:text-9xl {classes.title}"
 	>
 		{title}
 	</h1>

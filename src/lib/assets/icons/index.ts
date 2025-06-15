@@ -1,12 +1,15 @@
 export { default as audio } from './audio.svelte';
 export { default as ChevronDown } from './chevron-down.svelte';
 export { default as close } from './close.svelte';
+export { default as EmailIcon } from './email.svelte';
 export { default as file } from './file.svelte';
 export { default as logo } from './logo.svelte';
 export { default as lyric } from './lyric.svelte';
 export { default as microphone } from './microphone.svelte';
 export { default as music } from './music.svelte';
 export { default as pause } from './pause.svelte';
+export { default as PhoneIcon } from './phone.svelte';
 export { default as play } from './play.svelte';
 export { default as SearchIcon } from './search.svelte';
 export { default as UpArrow } from './up-arrow.svelte';
+export { default as WhatsappIcon } from './whatsapp.svelte';

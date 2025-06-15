@@ -8,14 +8,20 @@
 	});
 </script>
 
+<svelte:head>
+	<title>ELSPH | About us</title>
+	<meta name="description" content="About El Shaddai Prayer House" />
+	<meta property="og:title" content="ELSPH | About us" />
+	<meta property="og:description" content="About El Shaddai Prayer House" />
+	<meta property="og:image" content="/favicon.png" />
+	<meta property="og:url" content="https://elshaddaiprayerhouse.in/about-us" />
+</svelte:head>
+
 <main class="">
 	<Hero title="About us"></Hero>
 
-	<section class="content-bg p-10">
-		<div class="mx-auto max-w-4xl">
-			<h2 class="mb-10 text-center text-6xl font-bold">
-				Welcome to the website of El - Shaddai Prayer House
-			</h2>
+	<section class="content-bg p-10 pt-0">
+		<div class="mx-auto max-w-7xl">
 			<p>
 				Our assembly is one of the sister assemblies of the Indigenous Churches of India in the
 				pattern established through the labour & ministry of <a
@@ -63,13 +69,13 @@
 			</p>
 			<p>May the Lord richly bless you and make you fruitful in every good work.</p>
 			<p>Yours in Christ,</p>
-			<p class="font-bold">Church at EL - Shaddai</p>
+			<p class="font-bold">Church at El - Shaddai</p>
 		</div>
 	</section>
 </main>
 
 <style lang="postcss">
 	p {
-		@apply my-5 text-justify text-2xl;
+		@apply my-5 text-2xl md:text-justify;
 	}
 </style>

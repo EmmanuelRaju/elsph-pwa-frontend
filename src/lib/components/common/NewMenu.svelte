@@ -1,10 +1,9 @@
 <script lang="ts">
+	import { showScrollToTop } from '$lib/stores/show-scroll-to-top';
 	import { bodyScrollHandler } from '$lib/utils/common';
-
-	// import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
 	import { onDestroy, onMount } from 'svelte';
-	import { slide } from 'svelte/transition';
+	import { fade, slide } from 'svelte/transition';
 
 	export let open: boolean = false;
 
@@ -31,66 +30,16 @@
 			open = false;
 		}
 
-		// Get button's position
-		const buttonRect = menuButton.getBoundingClientRect();
-		const x = buttonRect.left + buttonRect.width / 2; // X center of button
-		const y = buttonRect.top + buttonRect.height / 2; // Y center of button
-
-		// Convert to percentage of viewport
-		const xPercent = ((x + 50) / window.innerWidth) * 100 + '%';
-		const yPercent = ((y + 200) / window.innerHeight) * 100 + '%';
-
-		// console.log('xPercent: ', xPercent, 'yPercent: ', yPercent);
-
-		// Set transform origin at button's position
-		gsap.set(menuOverlay, { transformOrigin: `${xPercent} ${yPercent}` });
-
 		if (open) {
+			$showScrollToTop = false;
 			history.pushState({ menuOpen: true }, '');
 			bodyScrollHandler(false);
 			gsap.to('.logo', { visibility: 'hidden', opacity: 0, duration: 0.5 });
-			// Expand overlay from button position
-			gsap.to(menuOverlay, {
-				backgroundColor: '#000',
-				visibility: 'visible',
-				scale: 50, // Expand to full screen
-				duration: 1.2,
-				ease: 'power3.inOut'
-			});
-
-			// Fade in menu items with stagger
-			gsap.to(menuItems.children, {
-				visibility: 'visible',
-				opacity: 1,
-				y: 0,
-				stagger: 0.2,
-				delay: 0.5
-			});
 		} else {
 			bodyScrollHandler(true);
 			const tl = gsap.timeline();
 			// Fade out menu items
-			tl.to(menuItems.children, {
-				opacity: 0,
-				y: 20,
-				stagger: -0.1
-			})
-				// Shrink overlay back into button
-				.to(
-					menuOverlay,
-					{
-						backgroundColor: '#FFF',
-						scale: 0,
-						duration: 1,
-						ease: 'power3.inOut'
-					},
-					'<'
-				)
-				.to('.logo', { visibility: 'visible', opacity: 1, duration: 0.5 }, '<+0.5')
-				.to(menuItems.children, {
-					visibility: 'hidden'
-				});
-
+			tl.to('.logo', { visibility: 'visible', opacity: 1, duration: 0.5 }, '<+0.5');
 			// Remove last history state without navigating away
 			history.back();
 		}
@@ -100,10 +49,8 @@
 		{ label: 'Home', link: '/' },
 		{ label: 'About Us', link: '/about-us' },
 		{ label: 'Good News', link: '/good-news' },
-		{ label: 'Prayer Requests', link: '/coming-soon' },
+		{ label: 'Resources', link: '/#resources' },
 		{ label: 'Contact Us', link: '/contact-us' }
-		// { label: 'Prayer Requests', link: '/prayer-requests' },
-		// { label: 'Contact Us', link: '/contact-us' }
 	];
 
 	function handlePopState() {
@@ -138,40 +85,45 @@
 </button>
 
 <!-- Expanding Overlay -->
-<div bind:this={menuOverlay} class="menu-overlay scale-0"></div>
-
-<!-- Fullscreen Menu Items -->
-<ul
-	data-lenis-prevent
-	bind:this={menuItems}
-	class="menu-items *:invisible *:translate-y-20 *:opacity-0"
-	class:overflow-y-scroll={open}
-	class:h-screen={open}
->
-	{#snippet navItem(params: { label: string; link: string })}
-		<li class="underline-offset-2">
-			<a
-				class="text-[18vw] font-medium leading-tight hover:underline sm:text-[10vw]"
-				href={params.link}
-				onclick={() => menuDisplayHandler('hide')}>{params.label}</a
-			>
-		</li>
-	{/snippet}
-	{#each navItems as item}
-		{@render navItem(item)}
-	{/each}
-</ul>
+{#if open}
+	<div
+		in:fade={{ delay: 500, duration: 500 }}
+		out:fade={{ duration: 500 }}
+		bind:this={menuOverlay}
+		class="menu-overlay"
+	>
+		<!-- Fullscreen Menu Items -->
+		<ul
+			bind:this={menuItems}
+			class="menu-items"
+			class:overflow-y-scroll={open}
+			class:h-screen={open}
+		>
+			{#snippet navItem(params: { label: string; link: string })}
+				<li class="underline-offset-2">
+					<a
+						class="text-6xl font-medium leading-tight hover:underline lg:text-9xl"
+						href={params.link}
+						onclick={() => menuDisplayHandler('hide')}>{params.label}</a
+					>
+				</li>
+			{/snippet}
+			{#each navItems as item}
+				{@render navItem(item)}
+			{/each}
+		</ul>
+	</div>
+{/if}
 
 <style lang="postcss">
 	/* Expanding Overlay */
 	.menu-overlay {
-		@apply fixed left-0 top-0 z-40 h-full w-full rounded-full bg-black;
-		transform-origin: center;
+		@apply fixed left-0 top-0 z-40 h-screen w-screen bg-black;
 	}
 
 	/* Fullscreen Menu Items */
 	.menu-items {
-		@apply fixed inset-0 z-40 flex flex-col gap-6 p-10 pt-5 text-white;
+		@apply flex flex-col gap-5 px-10 py-5 text-white;
 	}
 
 	/* Nav Icon */
