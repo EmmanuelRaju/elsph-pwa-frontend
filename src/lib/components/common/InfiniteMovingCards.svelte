@@ -64,7 +64,7 @@
 </script>
 
 <!--Em: If masking on ends is required [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)] -->
-<div bind:this={containerRef} class={cn('scroller relative overflow-hidden  ', className)}>
+<div bind:this={containerRef} class={cn('scroller overflow-hidden ', className)}>
 	<ul
 		bind:this={scrollerRef}
 		class={cn(
@@ -73,7 +73,7 @@
 			pauseOnHover && 'hover:[animation-play-state:paused]'
 		)}
 	>
-		{#each items as item, idx (item.day)}
+		{#each items as item, idx (item.day + idx)}
 			{@render weekCard2(item)}
 		{/each}
 	</ul>
@@ -125,8 +125,10 @@
 		description?: string;
 	}[];
 })}
-	<li class="flex grow overflow-clip rounded-[30px] border shadow-lg duration-300 hover:invert">
-		<div class=" bg-black p-5 text-center text-white">
+	<li
+		class="flex max-w-[400px] grow overflow-clip rounded-[30px] border shadow-lg duration-300 hover:invert md:max-w-[600px]"
+	>
+		<div class=" place-content-center bg-black p-5 text-center text-white">
 			<p class="text-4xl font-medium tracking-widest">{params.day}</p>
 			<p class="whitespace-nowrap text-lg font-medium uppercase">
 				{params.date}

@@ -123,27 +123,31 @@
 	}[] = [
 		{
 			day: 'Mon',
-			date: '16 Jun 2025',
+			date: '23 Jun 2025',
 			event: [
 				{
+					title: `Fasting prayer - Bro. David Raj (R.K. Puram)`,
+					time: { start: '10:00 A.M' }
+				},
+				{
 					title: `Sunday school teacher's zoom meeting`,
-					time: { start: '06:30 P.M' }
+					time: { start: '07:00 P.M' }
 				}
 			]
 		},
 		{
 			day: 'Tue',
-			date: '17 Jun 2025',
+			date: '24 Jun 2025',
 			event: [
 				{
-					title: `Bible study`,
+					title: `Bible study (Bro. Venkaiah)`,
 					time: { start: '06:30 P.M' }
 				}
 			]
 		},
 		{
 			day: 'Wed',
-			date: '18 Jun 2025',
+			date: '25 Jun 2025',
 			event: [
 				{
 					title: `Sister's meeting`,
@@ -153,7 +157,7 @@
 		},
 		{
 			day: 'Thu',
-			date: '19 Jun 2025',
+			date: '26 Jun 2025',
 			event: [
 				{
 					title: `Church prayer`,
@@ -163,31 +167,31 @@
 		},
 		{
 			day: 'Fri',
-			date: '20 Jun 2025',
+			date: '27 Jun 2025',
 			event: [
 				{
-					title: `All night prayer`,
-					time: { start: '09:30 P.M' }
+					title: `House dedication - Bro. Joseph & Sis. Sudha (Balaji Colony)`,
+					time: { start: '10:00 A.M' }
 				}
 			]
 		},
-		{
-			day: 'Sat',
-			date: '21 Jun 2025',
-			event: [
-				{
-					title: `Fasting prayer`,
-					time: { start: '10:30 A.M' }
-				}
-			]
-		},
+		// {
+		// 	day: 'Sat',
+		// 	date: '21 Jun 2025',
+		// 	event: [
+		// 		{
+		// 			title: `Fasting prayer`,
+		// 			time: { start: '10:30 A.M' }
+		// 		}
+		// 	]
+		// },
 		{
 			day: 'Sun',
-			date: '22 Jun 2025',
+			date: '29 Jun 2025',
 			event: [
 				{
 					title: `Sunday service`,
-					time: { start: '09:30 A.M' }
+					time: { start: '09:00 A.M' }
 				}
 			]
 		}
@@ -320,7 +324,11 @@
 			<div
 				class="relative flex flex-col items-center justify-center overflow-hidden rounded-md antialiased"
 			>
-				<InfiniteMovingCards items={weekSchedule} direction="left" speed="fast" />
+				<InfiniteMovingCards
+					items={[...weekSchedule, ...weekSchedule]}
+					direction="left"
+					speed="fast"
+				/>
 			</div>
 		</section>
 	</div>

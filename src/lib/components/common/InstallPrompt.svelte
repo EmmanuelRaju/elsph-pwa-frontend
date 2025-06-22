@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Close from '$lib/assets/icons/close.svelte';
 	import { onMount } from 'svelte';
 	let deferredPrompt: any = null;
 	let showInstallButton = false;
@@ -51,7 +52,7 @@
 <!-- ✅ Install button for Android, Windows, macOS -->
 {#if showInstallButton}
 	<button
-		on:click={installApp}
+		onclick={installApp}
 		class="fixed bottom-4 right-4 rounded-full bg-blue-600 px-4 py-2 text-white shadow-lg"
 	>
 		📲 Install App
@@ -60,7 +61,13 @@
 
 <!-- ✅ Manual prompt for iOS -->
 {#if showIOSPrompt}
-	<div class="fixed inset-x-4 bottom-4 rounded bg-yellow-100 p-4 text-sm text-gray-900 shadow-lg">
-		Tap <strong>Share</strong> → <strong>Add to Home Screen</strong> to install the app.
+	<div
+		class="fixed inset-x-4 bottom-4 flex items-center justify-between rounded bg-yellow-100 p-4 text-sm text-gray-900 shadow-lg"
+	>
+		<p>Tap <strong>Share</strong> → <strong>Add to Home Screen</strong> to install the app.</p>
+
+		<button class="size-3" onclick={() => (showIOSPrompt = false)}>
+			<Close></Close>
+		</button>
 	</div>
 {/if}
