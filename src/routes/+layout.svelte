@@ -48,7 +48,7 @@
 </ParaglideJS>
 
 <footer class="mt-5 p-10 pb-20">
-	<p class="text-center text-xl font-medium">&copy; 2025 ELSPH. All rights reserved.</p>
+	<p class="text-center text-xl font-medium">&copy; 2026 ELSPH. All rights reserved.</p>
 </footer>
 <MusicPlayer />
 <ScrollToTop></ScrollToTop>

@@ -114,7 +114,7 @@
 
 	const weekSchedule: {
 		day: string;
-		date: string;
+		// date: string;
 		event: {
 			title: string;
 			time: { start: string; end?: string };
@@ -123,12 +123,8 @@
 	}[] = [
 		{
 			day: 'Mon',
-			date: '23 Jun 2025',
+			// date: '23 Jun 2025',
 			event: [
-				{
-					title: `Fasting prayer - Bro. David Raj (R.K. Puram)`,
-					time: { start: '10:00 A.M' }
-				},
 				{
 					title: `Sunday school teacher's zoom meeting`,
 					time: { start: '07:00 P.M' }
@@ -137,17 +133,17 @@
 		},
 		{
 			day: 'Tue',
-			date: '24 Jun 2025',
+			// date: '24 Jun 2025',
 			event: [
 				{
-					title: `Bible study (Bro. Venkaiah)`,
+					title: `Bible study`,
 					time: { start: '06:30 P.M' }
 				}
 			]
 		},
 		{
 			day: 'Wed',
-			date: '25 Jun 2025',
+			// date: '25 Jun 2025',
 			event: [
 				{
 					title: `Sister's meeting`,
@@ -157,7 +153,7 @@
 		},
 		{
 			day: 'Thu',
-			date: '26 Jun 2025',
+			// date: '26 Jun 2025',
 			event: [
 				{
 					title: `Church prayer`,
@@ -165,16 +161,16 @@
 				}
 			]
 		},
-		{
-			day: 'Fri',
-			date: '27 Jun 2025',
-			event: [
-				{
-					title: `House dedication - Bro. Joseph & Sis. Sudha (Balaji Colony)`,
-					time: { start: '10:00 A.M' }
-				}
-			]
-		},
+		// {
+		// 	day: 'Fri',
+		// 	date: '27 Jun 2025',
+		// 	event: [
+		// 		{
+		// 			title: `House dedication - Bro. Joseph & Sis. Sudha (Balaji Colony)`,
+		// 			time: { start: '10:00 A.M' }
+		// 		}
+		// 	]
+		// },
 		// {
 		// 	day: 'Sat',
 		// 	date: '21 Jun 2025',
@@ -187,7 +183,7 @@
 		// },
 		{
 			day: 'Sun',
-			date: '29 Jun 2025',
+			// date: '29 Jun 2025',
 			event: [
 				{
 					title: `Sunday service`,
@@ -218,11 +214,12 @@
 	>
 		<div class="year-promise promise-text-shadow max-w-4xl text-center text-white">
 			<p class="lg:4xl text-2xl font-medium uppercase tracking-widest underline md:text-3xl">
-				2025 year promise
+				2026 year promise
 			</p>
-			<p class="lg:9xl text-6xl font-medium md:text-7xl">
-				The Lord will fight for you; you need only to be still <br /><span
-					class="lg:4xl whitespace-nowrap text-2xl font-medium md:text-3xl">- Exodus 14:14</span
+			<p class="lg:9xl text-5xl font-medium md:text-7xl">
+				To all who are victorious, who obey me to the very end, To them I will give authority over
+				all the nations. <br /><span
+					class="lg:4xl whitespace-nowrap text-2xl font-medium md:text-3xl">- Revelation 2:26</span
 				>
 			</p>
 		</div>

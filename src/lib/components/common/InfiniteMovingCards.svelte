@@ -4,7 +4,7 @@
 
 	export let items: {
 		day: string;
-		date: string;
+		date?: string;
 		event: {
 			title: string;
 			time: { start: string; end?: string };
@@ -118,7 +118,7 @@
 
 {#snippet weekCard2(params: {
 	day: string;
-	date: string;
+	date?: string;
 	event: {
 		title: string;
 		time: { start: string; end?: string };
@@ -130,9 +130,11 @@
 	>
 		<div class=" place-content-center bg-black p-5 text-center text-white">
 			<p class="text-4xl font-medium tracking-widest">{params.day}</p>
-			<p class="whitespace-nowrap text-lg font-medium uppercase">
-				{params.date}
-			</p>
+			{#if params.date}
+				<p class="whitespace-nowrap text-lg font-medium uppercase">
+					{params.date}
+				</p>
+			{/if}
 		</div>
 		<div class="bg-white p-5">
 			{#each params.event as event}
